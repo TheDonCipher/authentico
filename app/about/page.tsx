@@ -11,18 +11,18 @@ const teamMembers = [
   {
     name: 'Hillary Bandawe',
     role: 'Co-founder',
-    bio: 'Hillary is a holder of a Bachelor of Engineering in Geological Engineering from the Botswana International University of Science and Technology ',
+    bio: 'Hillary is a holder of a Bachelor of Engineering in Geological Engineering and Co-founder of Ingenuity Earth',
     image: '/images/user.png',
   },
   {
     name: 'Kealeboga Ratshipa',
-    role: 'Head of Product',
+    role: 'Lead Developer & Head of Product',
     bio: 'UX specialist focused on creating intuitive and secure document management experiences.',
     image: '/images/user.png',
   },
   {
     name: 'Horace Chipembere',
-    role: 'Lead Developer',
+    role: 'Developer',
     bio: 'Full-stack developer with a knack for blockchain integration and smart contract development.',
     image: '/images/user.png',
   },
@@ -32,12 +32,12 @@ export default function AboutUs() {
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-center mb-12">About Authentico</h1>
+        <h1 className="text-4xl font-extrabold text-center mb-12">About Ingenuity Earth</h1>
         
         <div className="mb-16">
           <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
           <p className="text-lg">
-            At Authentico, we're on a mission to revolutionize document verification using blockchain technology. 
+            With Authentico, we're on a mission to revolutionize document verification using blockchain technology. 
             We believe in creating a world where document authenticity is guaranteed, accessible, and efficient.
           </p>
         </div>

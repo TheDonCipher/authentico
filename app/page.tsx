@@ -6,7 +6,7 @@ export default function Home() {
     <div className="space-y-12">
       <section className="text-center">
         <h1 className="text-5xl font-bold mb-4">Welcome to Authentico</h1>
-        <p className="text-xl mb-8">The official document verification platform using blockchain technology</p>
+        <p className="text-xl mb-8">The official document verification platform using blockchain technology by Ingenuity Earth</p>
         <div className="space-x-4">
           <button className="bg-blue-500 text-white px-6 py-3 rounded-lg font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">Get Started</button>
           <button className="bg-green-500 text-white px-6 py-3 rounded-lg font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">Learn More</button>
