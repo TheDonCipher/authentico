@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${archivo.className} bg-yellow-50 text-gray-900`}>
         <header className="bg-blue-500 p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <nav className="container mx-auto flex justify-between items-center">
+          <nav className="container z-30 mx-auto flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold text-white">Authentico</Link>
             <div className="space-x-4">
               <Link href="/features" className="text-white hover:underline">Features</Link>
@@ -32,7 +32,7 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
-        <main className="container mx-auto mt-8 px-4">
+        <main className="container mx-auto mt-8 px-4 h-screen">
           {children}
         </main>
         <footer className="bg-gray-200 mt-12 p-4">
