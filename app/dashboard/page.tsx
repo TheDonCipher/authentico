@@ -4,6 +4,7 @@ import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, Hi
 
 import { Sidebar } from "flowbite-react";
 import { AddDocIcon, DashboardIcon } from "./svg";
+import { useState } from "react";
 
 
 export default function Dashboard() {
@@ -19,10 +20,31 @@ export default function Dashboard() {
 
 
 function SidebarSetup() {
+  const [ShowModal, setShowModal] = useState(false);
+
+  function toogleShow() {
+   setShowModal(!ShowModal)
+   let modalFordocSubdialog=document.querySelector(".submissionBox") as HTMLDialogElement;
+   if(ShowModal){
+
+     modalFordocSubdialog.close();
+     return
+    }
+    modalFordocSubdialog.showModal()
+
+
+
+  }
 
   return(
     <div className=" h-screen">
-    <SideSet />
+    <SideSet toogleShow={toogleShow } />
+    <dialog className="submissionBox "  >
+
+    <ModalForDocSubmission ShowModal={ShowModal} toogleShow={
+          toogleShow
+        }/>
+    </dialog>
     </div>
   )
 
@@ -30,10 +52,15 @@ function SidebarSetup() {
 
 
 
+interface ISideSet{
+  toogleShow:()=>void
+}
 
+interface IModalForDocSubmission extends ISideSet{
+  ShowModal:boolean;
+}
 
-
-export function SideSet() {
+export function SideSet({toogleShow}:ISideSet) {
 
   return (
 <div className="flex">
@@ -164,22 +191,77 @@ export function SideSet() {
 
 
    </div>
-   <AddDocumentButton/>
+   <AddDocumentButton toogleShow={function (): void {
+         toogleShow()
+        } }/>
 </div>
 
 </div>
   );
 }
+interface IAddDocumentButton {
+toogleShow:()=>void
 
-function AddDocumentButton() {
+}
+
+function AddDocumentButton({toogleShow}:IAddDocumentButton) {
+
+
+
 
   return(
-    <button className="bg-sky-600 p-4 fixed top-3/4 left-3/4 rounded-full shadow-md transition ease-in-out duration-200 hover:bg-lime-700" title="add document">
+    <button onClick={()=>{
+      toogleShow()
+
+
+      }} className="bg-sky-600 p-4 fixed top-3/4 left-3/4 rounded-full shadow-md transition ease-in-out duration-200 hover:bg-lime-700" title="add document">
       <div>
         <AddDocIcon/>
 
       </div>
     </button>
+  )
+
+}
+
+
+
+function ModalForDocSubmission({ShowModal,toogleShow}:IModalForDocSubmission) {
+
+
+  return(
+<div className="fixed">
+
+
+
+<div id="popup-modal" className="fixed justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div className="fixed top-1/3 left-1/2 p-4 w-full max-w-md max-h-full">
+        <div className="relative bg-sky-100 rounded-lg shadow dark:bg-gray-700">
+            <button onClick={toogleShow} type="button" className="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
+                <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+                <span className="sr-only" >Close modal</span>
+            </button>
+            <div className="p-4 md:p-5 text-center">
+                <svg className="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                </svg>
+
+                <div className="p-4">
+
+                <input type="file" name="" id="" />
+                </div>
+                <button data-modal-hide="popup-modal" type="button" className="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                   Submit
+                </button>
+                <button onClick={toogleShow} data-modal-hide="popup-modal" type="button" className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
   )
 
 }
